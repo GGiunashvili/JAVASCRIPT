@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Felipe's Taqueria</title>
+</head>
+<body>
+
+    <label for="item">შეიყვანე პროდუქტი:</label>
+    <input type="text" id="itemName">
+    <button onclick="calculateItemPrice()">დათვლა</button>
+    <p id="bill">Total: $0.00</p>
+    <p id="itemsSelected"></p>
+    <p id="error" style="background-color: red;"></p>
+
+    <script>
+        let menu = {
+            "Baja Taco": 4.25,
+            "Burrito": 7.50,
+            "b": 8.50,
+            "Nachos": 11.00,
+            "Quesadilla": 8.50,
+            "Super Burrito": 8.50,
+            "Super Quesadilla": 9.50,
+            "a": 3.00,
+            "aa": 8.00
+        };
+
+        let total = 0;
+        let selectedItems = [];
+
+        function calculateItemPrice(){
+            let itemName = document.getElementById("itemName").value.trim();
+            let bill = document.getElementById("bill");
+            let error = document.getElementById("error");
+            let itemsSelected = document.getElementById("itemsSelected");
+
+            // Reset error message
+            error.textContent = '';
+
+            // Check if item exists in menu
+            if(menu[itemName]){
+
+                total += menu[itemName];
+
+                selectedItems.push(itemName);
+
+                bill.textContent = `Total: $${total.toFixed(2)}`;
+
+                itemsSelected.textContent = `Selected items: ${selectedItems.join(', ')}`;
+   
+            } else {
+                error.textContent = `"${itemName}" ეს კერძი არ გვაქვს`;
+            }
+
+            // Clear the input field after processing
+            document.getElementById("itemName").value = '';
+        }
+    </script>
+</body>
+</html>

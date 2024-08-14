@@ -1,0 +1,60 @@
+<!-- // ### პროექტი 19 - Paint Calculator - საღებავის კალკულატორი
+
+// ზოგჯერ, დამრგვალების სტანდარტული წესების ნაცვლად, გვიწევს, რიცხვი მომდევნო რიცხვზე დავამრგვალოთ. 
+// გამოთვალეთ საღებავი გალონებში, რომელიც ოთახის ჭერის შესაღებადაა საჭირო. 
+// პროგრამამ input-ად უნდა მოითხოვოს ოთახის სიგრძე და სიგანე. 
+// ჩავთვალოთ, რომ ერთი გალონი 350 კვადრატულ ფუტს მოიცავს. 
+// მთელი რიცხვით აჩვენეთ გალონების ის რაოდენობა, რაც საჭიროა ჭერის შესაღებად.
+
+// მაგალითად:
+// ```shell
+// > You will need to purchase 2 gallons of paint to cover 360 square feet.
+// ```
+
+// * გახსოვდეთ - გალონი საღებავის ნაწილის შეძენა არ შეგიძლიათ, 
+// რიცხვი მომდევნო მთელ რიცხვზე - მთელ გალონზე უნდა დაამრგვალოთ. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paint Calculator</title>
+</head>
+<body>
+    <h1>Paint Calculator</h1>
+    <form id="paintForm">
+        <label for="length">Enter the length of the room (in feet): </label>
+        <input type="number" id="length" step="0.1" required><br><br>
+
+        <label for="width">Enter the width of the room (in feet): </label>
+        <input type="number" id="width" step="0.1" required><br><br>
+
+        <button type="button" onclick="calculatePaint()">Calculate Paint</button>
+    </form>
+
+    <p id="result"></p>
+
+    <script>
+        // ასოების დაბლოკვა ინფუთ ველში
+        document.getElementById('length').addEventListener('input', function (e) {
+            this.value = this.value.replace(/[^0-9.]/g, '');
+        });
+
+        document.getElementById('width').addEventListener('input', function (e) {
+            this.value = this.value.replace(/[^0-9.]/g, '');
+        });
+
+        function calculatePaint() {
+            const length = parseFloat(document.getElementById('length').value);
+            const width = parseFloat(document.getElementById('width').value);
+            
+
+            const area = length * width;
+
+            const gallonsNeeded = Math.ceil(area / 350); // აქ ვამრგვალებთ მომდევნო მთელ რიცხვზე
+
+            document.getElementById('result').textContent = `You will need to purchase ${gallonsNeeded} gallons of paint to cover ${area} square feet.`;
+        }
+    </script>
+</body>
+</html>

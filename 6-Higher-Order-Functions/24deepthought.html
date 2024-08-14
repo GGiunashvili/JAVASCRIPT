@@ -1,0 +1,67 @@
+<!-- ### პროექტი 24 - Deep Thought - ღრმა ფიქრი
+“All right,” said the computer, and settled into silence again. The two men fidgeted. The tension was unbearable.
+“You're really not going to like it,” observed Deep Thought.
+“Tell us!”
+“All right,” said Deep Thought. “The Answer to the Great Question…”
+“Yes…!”
+“Of Life, the Universe and Everything…” said Deep Thought.
+“Yes…!”
+“Is…” said Deep Thought, and paused.
+“Yes…!”
+“Is…”
+“Yes…!!!…?”
+“Forty-two,” said Deep Thought, with infinite majesty and calm.”
+— The Hitchhiker's Guide to the Galaxy, Douglas Adams
+
+შექმენით პროგრამა, რომელიც მომხმარებელს ცხოვრებაზე, 
+სამყაროსაა და ყველაფერზე მნიშვნელოვან კითხვას დაუსვამს. 
+თუ მომხმარებელი input-ად 42-ს შეიყვანს, რიცხვითი ან სტრიქონის ტიპით - forty-two ან forty two, 
+პროგრამამ Yes უნდა დაბეჭდოს, ყველა სხვა შემთხვევაში კი - No.
+
+Example Output
+```shell
+< What is the answer to the Great Question of Life, the Universe, and Everything? 42
+< Yes
+< What is the answer to the Great Question of Life, the Universe, and Everything? forty-two
+< Yes
+< What is the answer to the Great Question of Life, the Universe, and Everything? forty two
+< Yes
+```
+
+* პროგრამის output-ისთვის დიდ თუ პატარა ასოებს მნიშვნელობა არ უნდა ჰქონდეს. -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Thought</title>
+</head>
+<body>
+    <h1>Deep Thought</h1>
+
+    <label for="answer">What is the answer to the Great Question of Life, the Universe, and Everything?</label>
+    <input type="text" id="answer" placeholder="Enter your answer"><br><br>
+
+    <button onclick="checkAnswer()">Check Answer</button>
+
+    <p id="result"></p>
+
+    <script>
+        function checkAnswer() {
+            const userInput = document.getElementById('answer').value.trim().toLowerCase();
+            
+            // ვალიდური პასუხები
+            const validAnswers = ["42", "forty-two", "forty two"];
+
+            // შემოწმება
+            if (validAnswers.includes(userInput)) {
+                document.getElementById('result').innerText = "Yes";
+            } else {
+                document.getElementById('result').innerText = "No";
+            }
+        }
+    </script>
+</body>
+</html>

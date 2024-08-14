@@ -1,0 +1,60 @@
+<!-- ### პროექტი 25 - Home Federal Saving Bank  - ფედერალური ბანკი 
+
+Seinfeld-ის მე-7 სეზონის 24-ე ეპიზოდში, კრამერი სტუმრობს ბანკს, 
+რომელიც 100 დოლარის ჩუქებას ჰპირდება ყველას, ვისაც მისალმების ნიშნად hello-ს არ ეტყვიან. 
+კრამერს hey-ს ეუბნებიან, რაზეც ის ამბობს, რომ ეს hello არ არის და ამიტომ, ბანკისგან 100 დოლარს ითხოვს. 
+ბანკის მენეჯერი მას კომპრომისს სთავაზობსს: "თქვენ მიიღეთ მისალმება, რომელიც იწყება "h"-ით, $20-ზე რას იტყვით?"
+კრამერი თანხას იღებს.
+
+შექმენით პროგრამა, რომელიც მომხმარებელს მისალმებას მოსთხოვს. 
+თუ მისალმება hello-თი იწყება, დაბეჭდეთ $0; თუ input "h"-ით იწყება, 
+მაგრამ სიტყვა hello არ არის, $20 დაბეჭდეთ; სხვა შემთხვევებში კი - $100. 
+
+Example Output
+```shell
+< Greeting: Hello
+< $0
+< Greeting: Hi
+< $20
+< Greeting: Ciao
+< $100
+```
+
+* Input-ში იგნორირება გაუკეთეთ დასაწყისში არსებულ ცარიელ სივრცეს (whitespeace).
+* დიდ თუ პატარა ასოებს მნიშვნელობა არ უნდა ჰქონდეს. -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Federal Saving Bank</title>
+</head>
+<body>
+    <h1>Bank Greeting Checker</h1>
+
+    <label for="greeting">Enter your greeting:</label>
+    <input type="text" id="greeting" placeholder="Type your greeting here"><br><br>
+
+    <button onclick="checkGreeting()">Check Greeting</button>
+
+    <p id="result"></p>
+
+    <script>
+        function checkGreeting() {
+            // მიიღეთ შეყვანილი ტექსტი და მოაშორეთ ცარიელი სივრცეები
+            const greeting = document.getElementById('greeting').value.trim().toLowerCase();
+
+            // შემოწმების ლოგიკა
+            if (greeting.startsWith("hello")) {
+                document.getElementById('result').innerText = "$0";
+            } else if (greeting.startsWith("h")) {
+                document.getElementById('result').innerText = "$20";
+            } else {
+                document.getElementById('result').innerText = "$100";
+            }
+        }
+    </script>
+</body>
+</html>

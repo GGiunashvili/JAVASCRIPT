@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paint Calculator</title>
+</head>
+<body>
+    <h1>Paint Calculator</h1>
+    <script>
+        // ოთახის სიგრძისა და სიგანის შეყვანა
+        const length = parseFloat(prompt("Enter the length of the room in feet:"));
+        const width = parseFloat(prompt("Enter the width of the room in feet:"));
+
+        const area = length * width;
+        const gallonsNeeded = Math.ceil(area / 350);
+
+        console.log(`You will need to purchase ${gallonsNeeded} gallons of paint to cover ${area} square feet.`);
+        alert(`You will need to purchase ${gallonsNeeded} gallons of paint to cover ${area} square feet.`);
+    </script>
+</body>
+</html>

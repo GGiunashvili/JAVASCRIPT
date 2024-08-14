@@ -1,0 +1,66 @@
+<!-- 
+// ```
+
+// ### პროექტი 22 - Computing Simple Interest - მარტივი პროცენტის გამოთვლა
+// მარტივი პროცენტის გამოთვლა შესანიშნავი გზაა იმის სწრაფად გასარკვევად, აქვს თუ არა ინვესტიციას ღირებულება. 
+
+
+შექმენით პროგრამა, რომელიც გამოითვლის მარტივ პროცენტს. Input-ად მოითხოვეთ ძირითადი თანხაP, 
+განაკვეთი პროცენტში r და, შემდეგ კი აჩვენეთ დარიცხული თანხა (ძირი + პროცენტი). 
+მარტივი პროცენტის ფორმულა არის
+
+A = P(1 + rt), სადაც 
+A= 100(1 + )
+P არის ძირითადი თანხა, 
+r არის წლიური საპროცენტო განაკვეთი, 
+t არის წლების რაოდენობა და 
+A არის თანხა ინვესტიციის დასრულებისას.
+
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Simple Interest Calculator</title>
+ </head>
+ <body>
+     <h1>მარტივი პროცენტის კალკულატორი</h1>
+ 
+     <label for="principal">ძირითადი თანხა (P):</label>
+     <input type="text" id="principal" placeholder="ძირითადი თანხა"><br><br>
+ 
+     <label for="rate">წლიური საპროცენტო განაკვეთი (r %):</label>
+     <input type="text" id="rate" placeholder="პროცენტში"><br><br>
+ 
+     <label for="time">წლების რაოდენობა (t):</label>
+     <input type="text" id="time" placeholder="წლების რაოდენობა"><br><br>
+ 
+     <button onclick="calculateInterest()">გამოთვალე</button>
+ 
+     <p id="result"></p>
+ 
+     <script>
+         function calculateInterest() {
+             // Input-ების მნიშვნელობების მიღება
+             const P = parseFloat(document.getElementById('principal').value);
+             const r = parseFloat(document.getElementById('rate').value) / 100; // პროცენტი ათწილადში გადაყვანა
+             const t = parseFloat(document.getElementById('time').value);
+ 
+             // ვალიდაციის შემოწმება
+             if (isNaN(P) || isNaN(r) || isNaN(t)) {
+                 document.getElementById('result').innerText = "გთხოვთ, სწორად შეიყვანეთ თანხა, განაკვეთი და წლები.";
+                 return;
+             }
+ 
+             // მარტივი პროცენტის ფორმულის გამოყენება
+             const A = P * (1 + r * t);
+             const AFixed = A.toFixed(2); // შედეგის ორი ათწილადი ნიშანი
+ 
+             // შედეგის ჩვენება
+             document.getElementById('result').innerText = `საბოლოო თანხა: ${AFixed} ლარი`;
+         }
+     </script>
+ </body>
+ </html>
+ 

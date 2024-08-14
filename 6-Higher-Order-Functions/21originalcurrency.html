@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Conversion</title>
+</head>
+<body>
+
+    <label for="amount">რამდენი ევრო გაქვთ?</label>
+    <input type="text" id="amount" placeholder="ევროებში თანხა"><br><br>
+
+    <button onclick="convertCurrency()">გადააკეთე დოლარში</button>
+
+    <p id="result"></p>
+
+    <script>
+        function convertCurrency() {
+            const amountFrom = parseFloat(document.getElementById('amount').value);
+            const rateFrom = 2; // სტატიკური გაცვლითი კურსი: 1 ევრო = 2 დოლარი
+            const rateTo = 1; // დოლარის კურსი დოლართან მიმართებაში ყოველთვის 1-ია
+
+            if (isNaN(amountFrom)) {
+                document.getElementById('result').innerText = "გთხოვთ, სწორად შეიყვანეთ თანხა.";
+                return;
+            }
+
+            const amountTo = (amountFrom * rateFrom) / rateTo;
+            const amountToFixed = amountTo.toFixed(2);
+
+            document.getElementById('result').innerText = 
+                `${amountFrom} ევრო ${rateFrom}-ის კურსით არის ${amountToFixed} დოლარი.`;
+        }
+    </script>
+</body>
+</html>

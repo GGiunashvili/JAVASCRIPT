@@ -1,0 +1,72 @@
+<!-- ### პროექტი 23 - Determining Compound Interest - რთული პროცენტის გამოთვლა
+
+ინვესტიციების უმეტესობა იყენებს რთული პროცენტის ფორმულას, რომელიც ბევრად უფრო ზუსტია.
+ეს ფორმულა მოითხოვს, რომ პროგრამებში ხარისხის მაჩვენებლები ჩავრთოთ. 
+დაწერეთ პროგრამა, რომ გამოვთვალოთ ინვესტიციის ღირებულება დროთა განმავლობაში. 
+პროგრამამ უნდა მოითხოვოს საწყისი თანხა, ინვესტიციის წლების რაოდენობა, 
+საპროცენტო განაკვეთი და წლიური პერიოდების რაოდენობა. 
+
+
+ფორმულა შემდეგია: A = P(1 + r/n)nt, სადაც:
+* P არის ძირითადი თანხა.
+* r არის წლიური საპროცენტო განაკვეთი.
+* t არის წლების რაოდენობა.
+* n არის პროცენტის დარიცხვის რაოდენობა წელიწადში.
+* A არის თანხა ინვესტიციის ბოლოს.
+
+მაგალითად:
+```shell
+> What is the principal amount? 1500
+> What is the rate? 4.3
+> What is the number of years? 6
+> What is the number of times the interest is compounded per year? 4
+> $1500 invested at 4.3% for 6 years compounded 4 times per year is $1938.84.
+``` -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compound Interest Calculator</title>
+</head>
+<body>
+    <h1>რთული პროცენტის კალკულატორი</h1>
+
+    <label for="principal">ძირითადი თანხა (P):</label>
+    <input type="text" id="principal" placeholder="ძირითადი თანხა"><br><br>
+
+    <label for="rate">წლიური საპროცენტო განაკვეთი (r %):</label>
+    <input type="text" id="rate" placeholder="პროცენტში"><br><br>
+
+    <label for="years">წლების რაოდენობა (t):</label>
+    <input type="text" id="years" placeholder="წლების რაოდენობა"><br><br>
+
+    <label for="times">პროცენტის დარიცხვის რაოდენობა წელიწადში (n):</label>
+    <input type="text" id="times" placeholder="დარიცხვის რაოდენობა"><br><br>
+
+    <button onclick="calculateCompoundInterest()">გამოთვალე</button>
+
+    <p id="result"></p>
+
+    <script>
+        function calculateCompoundInterest() {
+            const P = parseFloat(document.getElementById('principal').value);
+            const r = parseFloat(document.getElementById('rate').value) / 100; // პროცენტი ათწილადში
+            const t = parseFloat(document.getElementById('years').value);
+            const n = parseFloat(document.getElementById('times').value);
+
+            if (isNaN(P) || isNaN(r) || isNaN(t) || isNaN(n)) {
+                document.getElementById('result').innerText = "გთხოვთ, სწორად შეიყვანეთ ყველა მონაცემი.";
+                return;
+            }
+
+            const A = P * Math.pow(1 + r / n, n * t);
+            const AFixed = A.toFixed(2); // შედეგის ორი ათწილადი ნიშანი
+
+            document.getElementById('result').innerText = 
+                `₾${P} ინვესტირებულია ${r * 100}% პროცენტით ${t} წლის განმავლობაში, დარიცხული ${n} ჯერ წელიწადში, და იქნება ₾${AFixed}.`;
+        }
+    </script>
+</body>
+</html>
