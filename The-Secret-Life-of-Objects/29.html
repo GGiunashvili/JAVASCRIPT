@@ -1,0 +1,71 @@
+
+<!-- ### პროექტი 29 - Math Interpreter - მათემატიკური ინტერპრეტატორი
+
+შექმენით პროგრამა, რომელიც მომხმარებლისგან იღებსარითმეტიკულ გამოთვლას,
+რომელსაც შემდეგ ახორციელებს და შედეგს ათწილადის სახით ბეჭდავს. 
+
+დაუშვით, რომ მომხმარებლის input დაფორმატებული იქნება, როგორც x y z, 
+თითო გამოტოვებით (space) x-სა და y-ს შორის, ისევე, როგორც y-სა და z-ს შორის. ამ გამოთვლაში:
+
+* x არის მთელი რიცხვი
+* y არის +, -, *, ან /
+* z არის მთელი რიცხვი
+
+მაგალითად, თუ input-ია 1 + 1, თქვენი პროგრამის output უნდა იყოს 2.0. დაუშვით, რომ თუ y არის /, მაშინ z არ იქნება 0.
+
+Example Output
+```shell
+< Expression: 1 + 1
+< 2.0
+< Expression: 4/3
+< 1.3
+< Expression: 100 - 1
+< 99.0
+```
+
+* პროგრამისთვის დიდ თუ პატარა ასოებს მნიშვნელობა არ უნდა ჰქონდეს. -->
+
+<script>
+    function getInput() {
+  const input = prompt("Enter an expression (e.g., '1 + 1'):").trim();
+  return input;
+}
+
+function parseInput(input) {
+  const parts = input.split(" ");
+  const x = parseFloat(parts[0]);
+  const y = parts[1];
+  const z = parseFloat(parts[2]);
+  return { x, y, z };
+}
+
+function calculate({ x, y, z }) {
+  switch (y) {
+    case "+":
+      return x + z;
+    case "-":
+      return x - z;
+    case "*":
+      return x * z;
+    case "/":
+      return x / z;
+    default:
+      return "Invalid operator";
+  }
+}
+
+function printResult(result) {
+  console.log(result.toFixed(1));
+}
+
+function mathInterpreter() {
+  const input = getInput();
+  const parsedInput = parseInput(input);
+  const result = calculate(parsedInput);
+  printResult(result);
+}
+
+// Run the interpreter
+mathInterpreter();
+
+</script>

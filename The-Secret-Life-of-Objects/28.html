@@ -1,0 +1,94 @@
+// <!-- ### დავალებები
+
+// ### პროექტი 28 - File Extensions - ფაილის ტიპები
+// ფაილების უმეტესობას აქვს file extensions - სუფიქსები, რომელიც სახელწოდებაში წერტილის (.) შემდეგ წერია. 
+მაგალითად, ფაილის სახელები GIF-ებისთვის მთავრდება .gif-ით, ხოლო JPEG-ების - .jpg ან .jpeg-ით.
+
+// ვებ ბრაუზერები, თავის მხრივ, ეყრდნობიან მედიის ტიპებს, რომელიც ადრე ცნობილი იყო, როგორც MIME ტიპები - ამით დგინდება, 
+როგორ უნდა იყოს ნაჩვენები ფაილები, რომლებიც ინტერნეტშია. როდესაც ვებ სერვერიდან ფაილს ტვირთავთ, 
+ეს სერვერი ე.წ. HTTP header-ს თავად ფაილთან ერთად გზავნის, რომელიც ფაილის მედიის ტიპზე მიუთითებს. 
+მაგალითად, მედიის ტიპი GIF-ისთვის არის image/gif, ხოლო მედიის ტიპი JPEG-ისთვის არის image/jpeg. 
+ფაილის მედიის ტიპის დასადგენად, ვებ სერვერი, როგორც წესი, ფაილის გაფართოებას აკვირდება.
+
+// იხილეთ developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types ფაილის ტიპები სიისთვის.
+
+// შექმენით პროგრამა, რომელიც სთხოვს მომხმარებელს ფაილის სახელს და შემდეგ ბეჭდავს, იმ შემთხვევაში, 
+თუ ფაილის სახელი ამ რომელიმე სუფისქით მთავრდება:
+
+// * .gif
+// * .jpg
+// * .jpeg
+// * .png
+// * .pdf
+// * .txt
+// * .zip
+
+// თუ ფაილის სახელი მთავრდება სხვა სუფიქსით ან საერთოდ არ აქვს სუფიქსი, დაბეჭდეთ application/octet-stream.
+
+// Example Output
+// ```shell
+// < File name: Cat.gif
+// < image/gif
+// < File name: Cat.jpg
+// < image/jpeg
+// < File name: Cat
+// < application/octet-stream
+// ```
+
+// * პროგრამისთვის დიდ თუ პატარა ასოებს მნიშვნელობა არ უნდა ჰქონდეს. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Media Type Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        input, button {
+            font-size: 1em;
+            padding: 10px;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>File Media Type Checker</h1>
+    
+    <!-- Label associated with the input field -->
+    <label for="filename">Enter a file name to determine its media type:</label><br>
+    
+    <input type="text" id="filename" placeholder="Enter file name">
+    <button onclick="checkMediaType()">Check Media Type</button>
+    
+    <p id="result"></p>
+    
+    <script>
+        function getMediaType(filename) {
+            const mediaTypes = {
+                '.gif': 'image/gif',
+                '.jpg': 'image/jpeg',
+                '.jpeg': 'image/jpeg',
+                '.png': 'image/png',
+                '.pdf': 'application/pdf',
+                '.txt': 'text/plain',
+                '.zip': 'application/zip'
+            };
+
+            filename = filename.toLowerCase();
+            const extension = filename.slice(filename.lastIndexOf('.'));
+            return mediaTypes[extension] || 'application/octet-stream';
+        }
+
+        function checkMediaType() {
+            const filename = document.getElementById("filename").value;
+            const mediaType = getMediaType(filename);
+            document.getElementById("result").textContent = `Media Type: ${mediaType}`;
+        }
+    </script>
+</body>
+</html>
+
