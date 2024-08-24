@@ -1,0 +1,84 @@
+<!-- ### დავალებები
+
+### პროექტი 35 - Blood Alcohol Calculator - სისხლში ალკოჰოლის შემცველობის კალკულატორი
+
+ზოგჯერ ჩახლართული გამოთვლები გვჭირდება, რომელიც არაერთი მოწოდებული მონაცემის საფუძველზე სრულდება და შედეგს სწორედ ასე ვიღებთ. 
+
+
+შექმენით პროგრამა, რომელიც მოგთხოვთ თქვენს: 
+წონას, 
+სქესს, 
+ჭიქების რაოდენობას,
+
+დალეული სასმელის მოცულობის მიხედვით ალკოჰოლის რაოდენობას და ბოლო ჭიქის მიღების შემდეგ გასული დროის მონაკვეთს. 
+გამოთვალეთ თქვენს სისხლში ალკოჰოლის შემცველობა (BAC) შემდეგი ფორმულის გამოყენებით:
+
+BAC = (A × 5.14 / W × r) − .015 × H
+
+სადაც:
+
+- A არის მთლიანი მოხმარებული ალკოჰოლი, უნციაში (oz).
+- W არის სხეულის წონა ფუნტებში.
+- r არის ალკოჰოლის განაწილების თანაფარდობა:
+  – 0,73 მამაკაცებისთვის
+  – 0,66 ქალებისთვის
+- H არის გასული საათების რაოდენობა ბოლო ჭიქის დალევის მერე.
+
+პროგრამამ უნდა დაბეჭდოს, შეიძლება თუ არა ავტომობილის მართვა, სისხლში ალკოჰოლის შემცველობის 0,08-სთან შედარებით.
+
+Example Output
+
+```shell
+< Your BAC is 0.08
+< It is not legal for you to drive.
+``` -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  
+        <label for="weight">წონა</label>
+        <input type="text" id="weight">
+
+        <input type="radio" id="male" name="sex" value="male">
+        <label for="male">მამრობითი</label>
+
+        <input type="radio" id="female" name="sex" value="female">
+        <label for="female">მდედრობითი</label>
+
+        <label for="drinkGlasses">რამდენი ჭიქა დალიე?</label>
+        <input type="text" id="drinkGlasses">
+
+
+        <label for="lastDrink">ბოლო ჭიქა რამდნი სათის წინ დალიე?</label>
+        <input type="text" id="lastDrink">
+
+        <button onclick="calculateBac()"> დაითვალე </button>
+        <p id="textGoesHere"></p>
+
+    <script>
+        let calculateBac  = function(){
+            const weight = document.getElementById("weight").value;
+            const sex = document.querySelector('#male:checked, #female:checked').value;
+            const r = (sex === "male") ? 0.73 : 0.66;
+            const drinkGlasses = document.getElementById("drinkGlasses").value;
+            const lastDrink = document.getElementById("lastDrink").value;
+            const bac = (drinkGlasses * 5.14 / weight * r) - 0.015 * lastDrink;
+
+            let message;
+            if (bac > 0.08){
+                message = "ტარება დაუშვებელია"
+            } else{
+                message = "შეგიძლია ატაროთ"
+            }
+            const textGoesHere = document.getElementById("textGoesHere");
+            textGoesHere.textContent = `შენს სისხლშია ${bac} და შენ ${message}`;   
+        }
+    </script>
+    
+</body>
+</html>

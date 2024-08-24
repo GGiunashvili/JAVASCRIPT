@@ -1,24 +1,46 @@
-function fetchData() {
-  // პირველი API მოთხოვნის შესრულება
-  const promise1 = fetch('https://jsonplaceholder.typicode.com/posts/1').then(response => response.json());
-  const promise2 = fetch('https://jsonplaceholder.typicode.com/posts/2').then(response => response.json());
-  
-  // ორივე Promises-ის პარალელურად შესრულება და შედეგების მიღება
-  Promise.all([promise1, promise2])
-      .then(results => {
-          // პირველ API-ს შედეგი
-          const data1 = results[0];
-          // მეორე API-ს შედეგი
-          const data2 = results[1];
+// <!-- ### დავალებები
 
-          // შედეგების დაბეჭდვა
-          console.log('Data 1:', data1);
-          console.log('Data 2:', data2);
-      })
-      .catch(error => {
-          // შეცდომის დამუშავება
-          console.error('Error fetching data:', error);
-      });
+// ### პროექტი 35 - Blood Alcohol Calculator - სისხლში ალკოჰოლის შემცველობის კალკულატორი
+
+// ზოგჯერ ჩახლართული გამოთვლები გვჭირდება, რომელიც არაერთი მოწოდებული მონაცემის საფუძველზე სრულდება და შედეგს სწორედ ასე ვიღებთ. 
+// შექმენით პროგრამა, რომელიც მოგთხოვთ თქვენს წონას, სქესს, ჭიქების რაოდენობას, 
+// დალეული სასმელის მოცულობის მიხედვით ალკოჰოლის რაოდენობას და ბოლო ჭიქის მიღების შემდეგ გასული დროის მონაკვეთს. 
+// გამოთვალეთ თქვენს სისხლში ალკოჰოლის შემცველობა (BAC) შემდეგი ფორმულის გამოყენებით:
+
+// BAC = (A × 5.14 / W × r) − .015 × H
+
+// სადაც:
+
+// - A არის მთლიანი მოხმარებული ალკოჰოლი, უნციაში (oz).
+// - W არის სხეულის წონა ფუნტებში.
+// - r არის ალკოჰოლის განაწილების თანაფარდობა:
+//   – 0,73 მამაკაცებისთვის
+//   – 0,66 ქალებისთვის
+// - H არის გასული საათების რაოდენობა ბოლო ჭიქის დალევის მერე.
+
+// პროგრამამ უნდა დაბეჭდოს, შეიძლება თუ არა ავტომობილის მართვა, სისხლში ალკოჰოლის შემცველობის 0,08-სთან შედარებით.
+
+// Example Output
+
+// ```shell
+// < Your BAC is 0.08
+// < It is not legal for you to drive.
+// ``` -->
+
+
+
+let Aweight = 80;
+let Rsex = {
+    male: 0.73,
+    female: 0.66
 }
+let glass = 2;
 
-fetchData();
+let AdrinkGlasses = 5;
+let HlastDrink = 2;
+
+
+let bac  = function(){
+    return((AdrinkGlasses * 5.14 / Aweight * Rsex.female) - 0.015 * HlastDrink);
+}
+console.log(bac());

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>დოკუმენტი</title>
+</head>
+<body>
+  
+    <label for="weight">წონა</label>
+    <input type="text" id="weight">
+
+    <input type="radio" id="male" name="sex" value="male">
+    <label for="male">მამრობითი</label>
+    <input type="radio" id="female" name="sex" value="female">
+    <label for="female">მდედრობითი</label>
+
+    <label for="drinkGlasses">რამდენი ჭიქა დალიე?</label>
+    <input type="text" id="drinkGlasses">
+
+    <label for="lastDrink">ბოლო ჭიქა რამდენი საათის წინ დალიე?</label>
+    <input type="text" id="lastDrink">
+
+    <button onclick="calculateBac()">დაითვალე</button>
+    
+    <script>
+        const Rsex = {
+            male: 0.73,
+            female: 0.66
+        };
+
+        let calculateBac = function() {
+            const Aweight = document.getElementById("weight").value;
+            const sex = document.querySelector('input[name="sex"]:checked').value;
+            const AdrinkGlasses = document.getElementById("drinkGlasses").value;
+            const HlastDrink = document.getElementById("lastDrink").value;
+            const bac = (AdrinkGlasses * 5.14 / Aweight * Rsex[sex]) - 0.015 * HlastDrink;
+            console.log(bac);
+        };
+    </script>
+    
+</body>
+</html>
