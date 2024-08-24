@@ -73,6 +73,41 @@
 // });
     
 
+// სხვა ტიპის ჩეინინგ homework დან
+// let promise1 = new Promise((resolve, reject) =>{
+//     setTimeout(() => {
+//         resolve("ONE success")
+//     }, 1000);
+// })
+
+// let promise2 = new Promise((resolve, reject) =>{
+//     setTimeout(() => {
+//         resolve("Two success")
+//     }, 1000);
+// })
+
+// let promise3 = new Promise((resolve, reject) =>{
+//     setTimeout(() => {
+//         resolve("Three success")
+//     }, 1000);
+// })
+
+
+// promise1
+//     .then((message1) => {
+//         console.log(message1);
+//         return promise2; // დაბრუნება შემდეგ ფრომისზე გადასასვლელად
+//     })
+//     .then((message2) => {
+//         console.log(message2);
+//         return promise3; // დაბრუნება შემდეგ ფრომისზე გადასასვლელად
+//     })
+//     .then((message3) => {
+//         console.log(message3);
+//         console.log('All Promises Resolved!');
+//     });
+
+
 
 // // V-VI. მრავალ Promise-ის მართვა: Promise.all, Promise.race
 

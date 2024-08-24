@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub User Info</title>
+</head>
+<body>
+    <h1>GitHub User Info Fetcher</h1>
+    <input type="text" id="username" placeholder="Enter GitHub username">
+    <button onclick="fetchGitHubUser()">Get Info</button>
+    
+    <div id="user-info">
+        <!-- GitHub user info will be displayed here -->
+    </div>
+
+    <script>
+        function fetchGitHubUser() {
+            const username = document.getElementById('username').value;
+            const url = `https://api.github.com/users/${username}`;
+            
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('User not found');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const userInfo = `
+                        <p><strong>User:</strong> ${data.login}</p>
+                        <p><strong>Name:</strong> ${data.name}</p>
+                        <p><strong>Bio:</strong> ${data.bio}</p>
+                        <p><strong>Public Repos:</strong> ${data.public_repos}</p>
+                        <p><strong>Followers:</strong> ${data.followers}</p>
+                        
+                    `;
+                    document.getElementById('user-info').innerHTML = userInfo;
+                })
+                .catch(error => {
+                    document.getElementById('user-info').innerHTML = `<p>Error: ${error.message}</p>`;
+                });
+        }
+    </script>
+</body>
+</html>
+
+<!-- 
+async await 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub User Info</title>
+</head>
+<body>
+    <h1>GitHub User Info Fetcher</h1>
+    <input type="text" id="username" placeholder="Enter GitHub username">
+    <button onclick="fetchGitHubUser()">Get Info</button>
+    
+    <div id="user-info">
+
+    </div>
+
+    <script>
+        async function fetchGitHubUser() {
+            const username = document.getElementById('username').value;
+            const url = `https://api.github.com/users/${username}`;
+            
+            try {
+                const response = await fetch(url);
+                
+                if (!response.ok) {
+                    throw new Error('User not found');
+                }
+                
+                const data = await response.json();
+                
+                const userInfo = `
+                    <p><strong>User:</strong> ${data.login}</p>
+                    <p><strong>Name:</strong> ${data.name}</p>
+                    <p><strong>Bio:</strong> ${data.bio}</p>
+                    <p><strong>Public Repos:</strong> ${data.public_repos}</p>
+                    <p><strong>Followers:</strong> ${data.followers}</p>
+                `;
+                
+                document.getElementById('user-info').innerHTML = userInfo;
+            } catch (error) {
+                document.getElementById('user-info').innerHTML = `<p>Error: ${error.message}</p>`;
+            }
+        }
+    </script>
+</body>
+</html> -->
