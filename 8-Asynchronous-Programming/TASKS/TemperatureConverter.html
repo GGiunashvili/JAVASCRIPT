@@ -1,0 +1,52 @@
+<!-- ### პროექტი 36 - Temperature Converter - ტემპერატურის კონვერტაცია
+
+შექმენით პროგრამა, რომელიც გარდაქმნის ტემპერატურას ფარენჰეიტიდან ცელსიუსში ან ცელსიუსიდან ფარენჰეიტში. 
+მოითხოვეთ საწყისი ტემპერატურა. პროგრამამ უნდა მოითხოვოს კონვერტაციის ტიპი და შემდეგ შეასრულოს კონვერტაცია.
+
+საჭირო ფორმულებია:
+C = (F − 32) × 5 / 9
+და
+F = (C × 9 / 5) + 32
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="celsius">celsius</label>
+    <input type="text" id="celsius">
+
+    <label for="fahrenheit">fahrenheit</label>
+    <input type="text" id="fahrenheit">
+
+    <button onclick="calculatefahrenheit()">დათვალე</button>
+
+    <script>
+
+
+        function calculatefahrenheit(){
+            let celsiuss = document.getElementById("celsius").value;
+            let fahrenheits = document.getElementById("fahrenheit").value;
+
+            if (celsiuss !== "") {
+                let fahrenheitToCelsius = (celsiuss * 9 / 5) + 32;
+                console.log( fahrenheitToCelsius);
+
+            }else if(fahrenheits !== "") {
+                let celsiussToFare = (fahrenheits - 32) * 5 / 9;
+                console.log( celsiussToFare);
+            }
+
+        }
+
+        calculatefahrenheit();
+
+
+    </script>
+    
+</body>
+</html>
