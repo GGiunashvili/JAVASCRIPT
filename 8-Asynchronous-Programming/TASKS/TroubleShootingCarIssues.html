@@ -1,0 +1,129 @@
+<!-- ### პროექტი 41 - Troubleshooting Car Issues - მანქანის პრობლემების მოგვარება
+
+საექსპერტო სისტემა (expert system) ხელოვნური ინტელექტის პროგრამის ტიპია, 
+რომელიც იყენებს გარკვეული ცოდნის ბაზას და წესების ერთობლიობას იმ დავალების შესასრულებლად, 
+რომელიც შეიძლება შეასრულოს ადამიანმა ექსპერტმა. მაგალითად, ბევრი ისეთი ვებსაიტია ხელმისაწვდომი, 
+რომელიც კითხვებზე პასუხების გაცემით გარკვეული სამედიცინო პრობლემის თვითდიაგნოსტიკაში გვეხმარებიან; 
+
+
+ტექნიკისა და პროგრამული უზრუნველყოფის მრავალი კომპანია გვთავაზობს პრობლემების მოგვარების ონლაინ ინსტრუმენტებს, 
+რომელიც ადამიანებს მარტივი ტექნიკური საკითხების გადაჭრაში სხვა ადამიანთან დარეკვამდე ეხმარება. 
+შექმენით პროგრამა, რომელიც მომხმარებელს მანქანის პრობლემების მოგვარებაში ეხმარება. 
+თითოეულ კითხვაზე მომხმარებელს "კი/არა" პასუხის გაცემა შეეძლება, 
+პროგრამა კი შესაბამისი კითხვების დასმას ამ პასუხების მიხედვით განაგრძობს.
+
+Example Output
+
+```shell
+< Is the car silent when you turn the key? y
+< Are the battery terminals corroded? n
+< The battery cables may be damaged.
+< Replace cables and try again.
+``` -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Troubleshooting Car Issues</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Troubleshooting Car Issues</h1>
+    <div id="troubleshooting">
+        <div class="question" id="question">Is the car silent when you turn the key? (y/n)</div>
+        <input type="text" id="answer" placeholder="Enter y or n">
+        <button onclick="nextStep()">Next</button>
+    </div>
+
+    <div class="result" id="result"></div>
+
+    <script>
+        let step = 1;
+
+        function nextStep() {
+            const answer = document.getElementById('answer').value.toLowerCase();
+            const questionElement = document.getElementById('question');
+            const resultElement = document.getElementById('result');
+
+            if (step === 1) {
+                if (answer === 'y') {
+                    questionElement.innerText = "Are the battery terminals corroded? (y/n)";
+                    step = 2;
+                } else if (answer === 'n') {
+                    questionElement.innerText = "Does the car make a clicking noise? (y/n)";
+                    step = 3;
+                } else {
+                    resultElement.innerText = "Please enter a valid response (y/n).";
+                }
+            } else if (step === 2) {
+                if (answer === 'y') {
+                    resultElement.innerText = "The battery terminals may be corroded. Clean terminals and try again.";
+                } else if (answer === 'n') {
+                    resultElement.innerText = "The battery cables may be damaged. Replace cables and try again.";
+                } else {
+                    resultElement.innerText = "Please enter a valid response (y/n).";
+                }
+                resetForm();
+            } else if (step === 3) {
+                if (answer === 'y') {
+                    resultElement.innerText = "The battery may be dead. Replace the battery and try again.";
+                } else if (answer === 'n') {
+                    questionElement.innerText = "Does the car crank up but fail to start? (y/n)";
+                    step = 4;
+                } else {
+                    resultElement.innerText = "Please enter a valid response (y/n).";
+                }
+            } else if (step === 4) {
+                if (answer === 'y') {
+                    resultElement.innerText = "There may be a problem with the spark plugs. Check the spark plugs and try again.";
+                } else if (answer === 'n') {
+                    resultElement.innerText = "There may be an issue with the fuel system. Check the fuel pump and try again.";
+                } else {
+                    resultElement.innerText = "Please enter a valid response (y/n).";
+                }
+                resetForm();
+            }
+        }
+
+        function resetForm() {
+            document.getElementById('troubleshooting').style.display = 'none';
+            document.getElementById('result').style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>

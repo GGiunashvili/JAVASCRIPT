@@ -1,0 +1,116 @@
+<!-- ### პროექტი 40 - Comparing Numbers - რიცხვების შედარება
+
+ერთი Input მნიშვნელობის შედარება ცნობილ მნიშვნელობასთან საკმაოდ ხშირია, 
+მაგრამ ასევე ხშირად დაგჭირდებათ input-ების კრებულის დამუშავება. დაწერეთ პროგრამა, 
+
+რომელიც ითხოვს სამ რიცხვს. ჯერ დარწმუნდით, 
+
+
+რომ ყველა რიცხვი განსხვავებულია და თუ ისინი არ განსხვავდებიან, 
+მაშინ პროგრამის მუშაობა შეჩერდეს. წინააღმდეგ შემთხვევაში, აჩვენეთ ამ სამიდან ყველაზე დიდი რიცხვი.
+
+Example Output
+
+```shell
+< Enter the first number: 1
+< Enter the second number: 51
+< Enter the third number: 2
+< The largest number is 51.
+```
+
+- დაწერეთ ალგორითმი ხელით. ნუ გამოიყენებთ ჩაშენებულ ფუნქციას სიაში ყველაზე დიდი რიცხვის საპოვნელად. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparing Numbers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Comparing Numbers</h1>
+
+    <label for="firstNumber">Enter the first number:</label>
+    <input type="number" id="firstNumber" placeholder="Enter the first number">
+
+    <label for="secondNumber">Enter the second number:</label>
+    <input type="number" id="secondNumber" placeholder="Enter the second number">
+
+    <label for="thirdNumber">Enter the third number:</label>
+    <input type="number" id="thirdNumber" placeholder="Enter the third number">
+
+    <button onclick="compareNumbers()">Compare</button>
+
+    <div class="result" id="result"></div>
+
+    <script>
+        function compareNumbers() {
+            const firstNumber = parseFloat(document.getElementById('firstNumber').value);
+            const secondNumber = parseFloat(document.getElementById('secondNumber').value);
+            const thirdNumber = parseFloat(document.getElementById('thirdNumber').value);
+
+            let resultText;
+
+            if (firstNumber === secondNumber || firstNumber === thirdNumber || secondNumber === thirdNumber) {
+                resultText = "Numbers must be different. Please enter different values.";
+            } else {
+                let largestNumber;
+
+                if (firstNumber > secondNumber && firstNumber > thirdNumber) {
+                    largestNumber = firstNumber;
+                } else if (secondNumber > firstNumber && secondNumber > thirdNumber) {
+                    largestNumber = secondNumber;
+                } else {
+                    largestNumber = thirdNumber;
+                }
+
+                resultText = `The largest number is ${largestNumber}.`;
+            }
+
+            document.getElementById('result').innerHTML = resultText;
+        }
+    </script>
+
+</body>
+</html>

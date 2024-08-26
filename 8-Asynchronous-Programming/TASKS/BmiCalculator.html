@@ -1,0 +1,51 @@
+<!-- ### პროექტი 37 - BMI Calculator - სხეულის მასის ინდექსის კალკულატორი
+
+შექმენით პროგრამა სხეულის მასის ინდექსის (BMI) გამოთვლისთვის. 
+
+ადამიანის სიმაღლე დუიმებში უნდა იყოს, 
+ხოლო წონა - ფუნტებში. 
+
+პროგრამამ უნდა სთხოვოს მომხმარებელს წონის და სიმაღლის მითითება. 
+გამოთვალეთ BMI შემდეგი ფორმულის გამოყენებით:
+
+- bmi = (weight / (height × height))\* 703
+
+თუ BMI არის 18,5-დან 25-მდე, აჩვენეთ, რომ ადამიანის წონა ნორმაშია. თუ BMI ამ შუალედს სცილდება, დაბეჭდეთ, 
+ადამიანს მცირე წონა აქვს თუ ჭარბი და მიუთითეთ, რომ მიმართოს ექიმს.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="height">height</label>
+    <input type="text" id="height">
+
+    <label for="weight">weight</label>
+    <input type="text" id="weight">
+
+    <button onclick="bmiCalculate()"></button>
+  
+    <script>
+        function bmiCalculate(){
+            let height = document.getElementById("height").value;
+            let weight = document.getElementById("weight").value;
+
+            let bmiFormula = (weight / (height * height)) * 703;
+            if (bmiFormula < 18.5) {
+                console.log("You are underweight. You should see your doctor.");
+            } else if (bmiFormula >= 18.5 && bmiFormula <= 25) {
+                console.log("You are within the ideal weight range.");
+            } else {
+                console.log("You are overweight. You should see your doctor.");
+            }
+            console.log(bmiFormula);
+        }
+
+    </script>
+</body>
+</html>

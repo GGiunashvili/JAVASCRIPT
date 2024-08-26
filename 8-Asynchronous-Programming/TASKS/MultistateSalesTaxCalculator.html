@@ -1,0 +1,153 @@
+<!-- ### პროექტი 38 - Multistate Sales Tax Calculator - შტატშორისი გაყიდვების გადასახადის კალკულატორი
+
+კომპლექსურ პროგრამებს შეიძლება გადაწყვეტილებებში კიდევ სხვა გადაწყვეტილებები ჰქონდეთ ჩაშენებული, 
+ასე რომ, როდესაც ერთი გადაწყვეტილება მიიღება, დამატებითი გადაწყვეტილებებიც უნდა იქნას მიღებული. 
+შექმენით საგადასახადო კალკულატორი, რომელიც ამუშავებს მრავალ შტატს და მრავალ დაბას თითოეულ შტატში.
+
+
+პროგრამა მოუწოდებს მომხმარებელს შეკვეთის ოდენობას და შტატს, სადაც შეკვეთა გაიგზავნება. 
+
+ვისკონსინის მკვიდრთათვის, მოითხოვეთ საცხოვრებელი ადგილი.
+
+• Eau Claire-ის მცხოვრებლებს დამატებით დააკისრეთ 0.005 გადასახადი.
+• Dunn-ის მცხოვრებლების კი დამატებით დააკისრეთ 0.004 გადასახადი.
+
+ილინოისის მცხოვრებლებს 8% გაყიდვების გადასახადი უნდა დაეკისროთ, დაბის დონის დამატებითი გადასახადის გარეშე. 
+არც ერთ სხვა შტატს გადასახადი არ ეკისრება. შესაბამისად, 
+პროგრამა აჩვენებს გადასახადს (tax) და ჯამს (total - (საწყისი ფასი + გადასახადი)) ვისკონსინისა და ილინოისის მცხოვრებლებისთვის, 
+ყველა დანარჩენი შტატისთვის კი - მხოლოდ ჯამს.
+Example Output
+
+```shell
+< What is the order amount? $100
+< What state do you live in? Wisconsin
+< What county do you live in? Dunn
+< The tax is $0.40.
+< The total is $100.40.
+
+< What is the order amount? $75
+< What state do you live in? Illinois
+< The tax is 8%.
+< The total is $81.00.
+
+< What is the order amount? 200
+< What state do you live in? California
+< The total is $200.00.
+```
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multistate Sales Tax Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Multistate Sales Tax Calculator</h1>
+
+    <label for="orderAmount">Order Amount ($):</label>
+    <input type="number" id="orderAmount" placeholder="Enter the order amount">
+
+    <label for="state">State:</label>
+    <select id="state">
+        <option value="">Select your state</option>
+        <option value="illinois">Illinois</option>
+        <option value="wisconsin">Wisconsin</option>
+        <option value="other">Other</option>
+    </select>
+
+    <div id="countyField" style="display:none;">
+        <label for="county">County:</label>
+        <select id="county">
+            <option value="">Select your county</option>
+            <option value="eau claire">Eau Claire</option>
+            <option value="dunn">Dunn</option>
+        </select>
+    </div>
+
+    <button onclick="calculateTax()">Calculate</button>
+
+    <div class="result" id="result"></div>
+
+    <script>
+        document.getElementById('state').addEventListener('change', function() {
+            const countyField = document.getElementById('countyField');
+            if (this.value === 'wisconsin') {
+                countyField.style.display = 'block';
+            } else {
+                countyField.style.display = 'none';
+            }
+        });
+
+        function calculateTax() {
+            const orderAmount = parseFloat(document.getElementById('orderAmount').value);
+            const state = document.getElementById('state').value;
+            let tax = 0;
+
+            if (state === 'illinois') {
+                tax = orderAmount * 0.08;
+            } else if (state === 'wisconsin') {
+                const county = document.getElementById('county').value;
+
+                if (county === 'eau claire') {
+                    tax = orderAmount * 0.005;
+                } else if (county === 'dunn') {
+                    tax = orderAmount * 0.004;
+                }
+            }
+
+            const total = orderAmount + tax;
+            let resultText = `The total is $${total.toFixed(2)}.`;
+
+            if (tax > 0) {
+                resultText = `The tax is $${tax.toFixed(2)}.<br>The total is $${total.toFixed(2)}.`;
+            }
+
+            document.getElementById('result').innerHTML = resultText;
+        }
+    </script>
+
+</body>
+</html>

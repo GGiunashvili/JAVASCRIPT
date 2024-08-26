@@ -1,0 +1,134 @@
+<!-- ### პროექტი 39 - Numbers to Names - რიცხვები სიტყვებში
+
+ბევრი პროგრამა ინფორმაციას მომხმარებლისთვის ერთი ფორმით აჩვენებს, მაგრამ იყენებს სხვა ფორმას პროგრამის შიგნით. 
+
+
+მაგალითად, შეგიძლიათ აჩვენოთ სიტყვა Blue ეკრანზე, მაგრამ ეკრანს მიღმა გექნებათ ამ ფერის რიცხვითი ან ტექსტუალური მნიშვნელობა, 
+
+რადგან შეიძლება, სიტყვიერი აღწერილობის წარმოდგენა სხვა ენაზე - ესპანურენოვანი ვიზიტორებისთვის გჭირდებოდეთ. 
+
+დაწერეთ პროგრამა, რომელიც გადააქცევს რიცხვს 1-დან 12-მდე შესაბამის თვეში. 
+მოითხოვეთ ნომერი და აჩვენეთ შესაბამისი კალენდარული თვე, სადაც 1 იქნება იანვარი, ხოლო 12 - დეკემბერი. 
+ამ დიაპაზონის გარეთ ნებისმიერი მნიშვნელობისთვის დაბეჭდეთ შესაბამისი შეცდომის შეტყობინება.
+
+Example Output
+
+```shell
+< Please enter the number of the month: 3
+< The name of the month is March.
+```
+
+- ამ პროგრამისთვის გამოიყენეთ switch/case statement. -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Numbers to Month Names</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Numbers to Month Names</h1>
+
+    <label for="monthNumber">Please enter the number of the month (1-12):</label>
+    <input type="number" id="monthNumber" placeholder="Enter a number">
+
+    <button onclick="getMonthName()">Show Month Name</button>
+
+    <div class="result" id="result"></div>
+
+    <script>
+        function getMonthName() {
+            const monthNumber = parseInt(document.getElementById('monthNumber').value);
+            let monthName;
+
+            switch(monthNumber) {
+                case 1:
+                    monthName = "January";
+                    break;
+                case 2:
+                    monthName = "February";
+                    break;
+                case 3:
+                    monthName = "March";
+                    break;
+                case 4:
+                    monthName = "April";
+                    break;
+                case 5:
+                    monthName = "May";
+                    break;
+                case 6:
+                    monthName = "June";
+                    break;
+                case 7:
+                    monthName = "July";
+                    break;
+                case 8:
+                    monthName = "August";
+                    break;
+                case 9:
+                    monthName = "September";
+                    break;
+                case 10:
+                    monthName = "October";
+                    break;
+                case 11:
+                    monthName = "November";
+                    break;
+                case 12:
+                    monthName = "December";
+                    break;
+                default:
+                    monthName = "Invalid month number. Please enter a number between 1 and 12.";
+            }
+
+            document.getElementById('result').innerHTML = `The name of the month is: ${monthName}`;
+        }
+    </script>
+
+</body>
+</html>
