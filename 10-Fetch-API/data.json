@@ -1,0 +1,60 @@
+{
+  "people": [
+    {
+      "name": "giorgi",
+      "age": 25,
+      "id": "1",
+      "height": "190 cm"
+    },
+    {
+      "name": "giorgi",
+      "age": 21,
+      "id": "2"
+    },
+    {
+      "id": "3",
+      "name": "giorgi",
+      "age": "23"
+    },
+    {
+      "id": "a323",
+      "name": "sofi",
+      "age": 19
+    },
+    {
+      "id": "d459",
+      "name": "beqa",
+      "age": "20"
+    },
+    {
+      "id": "d920",
+      "name": "lasha",
+      "age": "20"
+    },
+    {
+      "id": "b3c4",
+      "name": "tedo",
+      "age": "25"
+    },
+    {
+      "id": "b56b",
+      "name": "beqa",
+      "age": "20"
+    },
+    {
+      "id": "0397",
+      "name": "lasha",
+      "age": "20"
+    },
+    {
+      "id": "25ae",
+      "name": "tedo",
+      "age": "25"
+    },
+    {
+      "id": "0cc9",
+      "name": "tedo",
+      "age": "22"
+    }
+  ]
+}
