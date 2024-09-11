@@ -99,29 +99,26 @@
 
 // 5. დაწერეთ ფუნქცია, რომელიც ცდილობს JSON სტრინგის პარსინგს (მაგალითად სტრინგად ჩაწერილ ობიექტს გადაიყვანს ობიექტში). 
 // გამოიყენეთ try/catch იმ ქეისებისთვის, როცა JSON სტრინგი არავალიდურია.
+// function parseJSON(jsonString) {
+//     try {
+//         // JSON სტრინგის პარსინგის მცდელობა
+//         let parsedObject = JSON.parse(jsonString);
+//         console.log("Parsed successfully:", parsedObject);
+//         return parsedObject;
+//     } catch (error) {
+//         // შეცდომის დაგდება
+//         throw new Error("Invalid JSON string: " + error.message);
+//     }
+// }
 
-function parseJSON(jsonString) {
-    try {
-        // JSON სტრინგის პარსინგის მცდელობა
-        let parsedObject = JSON.parse(jsonString);
-        console.log("Parsed successfully:", parsedObject);
-        return parsedObject;
-    } catch (error) {
-        // თუ JSON სტრინგი არ არის ვალიდური, დავიჭერთ ერორს და დავბეჭდავთ
-        console.error("Invalid JSON string:", error.message);
-        return null; // დაბრუნება null არავალიდური JSON-ის შემთხვევაში
-    }
-}
+//     // const invalidJSONString = '{"name": "John", "age": 30'; // გამოტოვებულია დახურვის ფრჩხილი
+//     const validJSONString = '{"name": "John", "age": 30}';
+//     try {
+//         parseJSON(validJSONString); // Parsed successfully: {name: "John", age: 30}
+//     } catch (e) {
+//         console.error(e.message);
+//     }
 
-// მაგალითები:
-
-// ვალიდური JSON სტრინგი
-const validJSONString = '{"name": "John", "age": 30}';
-parseJSON(validJSONString); // Parsed successfully: {name: "John", age: 30}
-
-// არავალიდური JSON სტრინგი
-const invalidJSONString = '{"name": "John", "age": 30'; // გამოტოვებულია დახურვის ფრჩხილი
-parseJSON(invalidJSONString); // Invalid JSON string: Unexpected end of JSON input
 
 
 // 6. დაწერეთ ფუნქცია, რომელიც აგზავნის რექვესთს GitHub-ის API-ზე და მოაქვს გითჰაბის იუზერის დატა. 
@@ -155,5 +152,11 @@ async function fetchGitHubUserData(username) {
     }
 }
 
-// ფუნქციის გამოძახება, temuritsutskiridze იუზერის ინფორმაციის მისაღებად
-fetchGitHubUserData("ggiunashvili");
+
+fetchGitHubUserData("ggiunasshvili");
+
+
+
+
+
+
