@@ -1,0 +1,71 @@
+{
+  "books-1": [
+    {
+      "name": "To Kill a Mockingbird",
+      "author": "Harper Lee",
+      "id": "8"
+    },
+    {
+      "name": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "id": "7"
+    },
+    {
+      "id": "6377",
+      "name": "razmuxin",
+      "author": "dostoevksi"
+    },
+    {
+      "id": "1e56",
+      "book": "jsjsjsjsj"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "name": "ninooo",
+      "borrowedBooks": [
+        {
+          "name": "To Kill a Mockingbird",
+          "author": "Harper Lee",
+          "id": "8"
+        },
+        {
+          "name": "To Kill a Mockingbird",
+          "author": "Harper Lee",
+          "id": "8"
+        },
+        {
+          "name": "To Kill a Mockingbird",
+          "author": "Harper Lee",
+          "id": "8"
+        }
+      ]
+    },
+    {
+      "id": "a0d9",
+      "name": "ninooo",
+      "borrowedBooks": []
+    },
+    {
+      "id": "b20a",
+      "name": "ninooo",
+      "borrowedBooks": []
+    },
+    {
+      "id": "c38b",
+      "name": "ninooo",
+      "borrowedBooks": []
+    },
+    {
+      "id": "18dd",
+      "name": "ninooo",
+      "borrowedBooks": []
+    },
+    {
+      "id": "327a",
+      "name": "ninooo",
+      "borrowedBooks": []
+    }
+  ]
+}
